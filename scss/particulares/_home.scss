@@ -1,0 +1,167 @@
+//imports necesarios
+@import "../base/variables";
+@import "../base/mixin";
+@import "../base/extend";
+
+/*Estilos para el main en home*/
+.main-home{
+    @extend %flexi;
+    align-items: center;
+    .imagen-perfil{
+        width: 80%;
+        margin: 3rem;
+    }
+    .titulo-home{
+        font-size: medium;
+    }
+}
+
+/*Estilos para el aside en home*/
+
+aside{
+    display: none;
+}
+
+/*Estilos para la sección de información*/
+
+.info-home{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 1rem;
+    div{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background-color: $color4;
+        padding: 1rem;
+        margin: 1.3rem;
+        gap: 0.5rem;
+        img{
+            @include boton ($color1t05, 0.5rem);
+            width: 50%;
+            margin: 2rem;
+        }
+        img:hover{
+            @include hovbot;
+        }
+        p{
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+        }
+    }
+}
+
+/*Celulares con la pantalla un poco más grande*/
+
+@media screen and (min-width:300px){
+    .main-home{
+        .titulo-home{
+            font-size: larger;
+        }
+    }
+    .info-home{
+        margin: 2rem;
+        div{
+            img{
+                width: 40%;
+            }
+        }
+    }
+}
+
+
+/*Estilos de home para tablet*/
+@media screen and (min-width:600px){
+    .main-home{
+        .titulo-home{
+            font-size: x-large;
+        }
+    }
+    .info-home{
+        margin: 4rem;
+    }
+}
+
+/*Estilos desde tablet pequeña en modo horizontal*/
+
+@media screen and (min-width:800px){
+    .info-home{
+        flex-direction: row;
+        margin-right: 0.7rem;
+        margin-left: 0.7rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+
+        div{
+            width: 33%;
+            img{
+                width: 50%;
+            }
+        
+            .home-about-bombillo{
+                width: 40%;
+            }
+            
+        }
+    }
+}
+
+/* Estilos de home para escritorio*/
+
+@media screen and (min-width:1024px){
+    .container-home{
+        display: grid;
+        grid-template-columns: 1fr 1fr 0.95fr;
+        grid-template-rows: 0.8fr 4fr 3fr 0.8fr;
+
+        grid-template-areas: 
+            "cab cab cab"
+            "main main aside"
+            "info info info"
+            "footer footer footer";
+        
+        .header-home{
+            grid-area: cab;
+        }
+
+        .main-home{
+            grid-area: main;
+        }
+
+        aside{
+            grid-area: aside;
+            background-color: $color3;
+            color: $color1;
+            display: flex;
+            flex-direction: column;
+            margin-top: 3rem;
+            margin-right: 2rem;
+            padding: 2rem;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+
+            .resaltar-noticia{
+                font-weight: bold;
+            }
+        }
+
+        .info-home{
+            grid-area: info;
+            div{
+                img{
+                    width: 35%;
+                }
+                .home-about-bombillo{
+                    width: 29%;
+                }
+            }
+        }
+
+        .footer-home{
+            grid-area: footer;
+        }
+    }
+}

@@ -1,0 +1,163 @@
+//imports necesarios
+@import "../base/variables";
+@import "../base/mixin";
+@import "../base/extend";
+
+/*Estilos de main para contact*/
+.main-contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .titulo-contact{
+        margin: 2rem;
+    }
+    .info-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .contact-info{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 70%;
+            }
+            .parr-contact{
+                text-align: center;
+                margin: 3rem;
+                font-size: 12px;
+                span{
+                    display: block;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+            }
+        }
+        .contact-form{
+            background-color: $color4;
+            width: 80%;
+            margin: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            fieldset{
+                @extend %flexi;
+                justify-content: center;
+                align-items: center;
+                gap: 0rem;
+                legend{
+                    text-align: center;
+                }
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1rem;
+                    width: 100%;
+                    input[type=text]{
+                        width: 100%;
+                        font-size: 12px;
+                        border-radius: 0.5rem;
+                        border: 0;
+                    }
+                    input[type=email]{
+                        width: 100%;
+                        font-size: 12px;
+                        border-radius: 0.5rem;
+                        border: 0;
+                    }
+                    textarea{
+                        width: 100%;
+                        margin-bottom: 1rem;
+                        font-size: 12px;
+                        border-radius: 0.5rem;
+                        border: 0;
+                    }
+                    .boton-form{
+                        @include boton ($color2t05, 0.5rem);
+                        border: 0;
+                        box-shadow: none;
+                        text-align: center;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                    }
+                    .boton-form:hover{
+                        @include hovbot;
+                    }
+                }
+                .form-botones{
+                    flex-direction: row;
+                }
+            }  
+        }
+    }
+}
+
+@media screen and (min-width:300px){
+    .main-contact{
+        .info-form{
+            .contact-info{
+                .parr-contact{
+                    font-size: 16px;
+                }
+            }
+            .contact-form{
+                fieldset{
+                    div{
+                        input[type=text]{
+                            font-size: 16px;
+                        }
+                        input[type=email]{
+                            font-size: 16px;
+                        }
+                        textarea{
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*Estilos de contact para tablets*/
+@media screen and (min-width:800px){
+    .container-contact{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.8fr 4fr 0.8fr;
+    
+        /*grid template areas*/
+        grid-template-areas: 
+            "headco"
+            "mainco"
+            "footco";
+        .header-contact{
+            grid-area: headco;
+        }
+        .main-contact{
+            grid-area: mainco;
+            .titulo-contact{
+                text-align: center;
+                margin: 1rem;
+            }
+            .info-form{
+                flex-direction: row;
+                .contact-info{
+                    .img-contact{
+                        width: 100%;
+                        padding: 2rem;
+                    }
+                }
+                .contact-form{
+                    height: 80vh;
+                }
+            }
+        }
+        .footer-contact{
+            grid-area: footco;
+        }
+    }
+}
